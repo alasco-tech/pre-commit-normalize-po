@@ -7,7 +7,7 @@ from unittest import mock
 import polib
 
 
-def main(self):
+def main():
     with mock.patch.object(polib.POEntry, "__cmp__", patched_cmp):
         path = sys.argv[1]
         po_file = polib.pofile(str(path), wrapwidth=100)

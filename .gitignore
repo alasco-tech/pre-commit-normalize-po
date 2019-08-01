@@ -1,1 +1,4 @@
 *.swp
+.venv
+__pycache__
+pre_commit_dummy_package.egg-info/

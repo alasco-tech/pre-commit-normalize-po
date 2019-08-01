@@ -1,7 +1,7 @@
 -   id: normalize_po
     name: Normalize PO files
     description: Sort, wrap & stuff
-    entry: normalize_po.py
+    entry: normalize-po
     language: python
     files: '\.po$'
     types: [text]
