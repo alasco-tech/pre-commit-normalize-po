@@ -3,5 +3,5 @@
     description: Sort, wrap & stuff
     entry: normalize_po.py
     language: python
-    files: '**/*.po'
+    files: '\.po$'
     types: [text]
