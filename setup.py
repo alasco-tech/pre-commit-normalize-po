@@ -2,7 +2,7 @@ from setuptools import setup
 
 
 setup(
-    name='pre_commit_dummy_package',
+    name='normalize_po',
     version='0.0.0',
     install_requires=['polib ~= 1.1.0'],
     entry_points={
