@@ -21,6 +21,14 @@ def main():
 
         po_file.save()
 
+        # Remove merge markers from msgcat
+        with open(str(path), "r") as fp:
+            lines = list(fp.readlines())
+        with open(str(path), "w") as fp:
+            for line in lines:
+                if not line.startswith("# #-#-#-#-#"):
+                    fp.write(line)
+
 
 IGNORE_META = (
     "Language-Team",
