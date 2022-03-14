@@ -9,25 +9,25 @@ import polib
 
 def main():
     with mock.patch.object(polib.POEntry, "__cmp__", patched_cmp):
-        path = sys.argv[1]
-        po_file = polib.pofile(str(path), wrapwidth=100)
-        po_file.sort()
+        for path in sys.argv[1:]:
+            po_file = polib.pofile(str(path), wrapwidth=100)
+            po_file.sort()
 
-        meta = collections.OrderedDict()
-        for key, val in sorted(po_file.metadata.items()):
-            if key not in IGNORE_META:
-                meta[key] = val
-        po_file.metadata = meta
+            meta = collections.OrderedDict()
+            for key, val in sorted(po_file.metadata.items()):
+                if key not in IGNORE_META:
+                    meta[key] = val
+            po_file.metadata = meta
 
-        po_file.save()
+            po_file.save()
 
-        # Remove merge markers from msgcat
-        with open(str(path), "r") as fp:
-            lines = list(fp.readlines())
-        with open(str(path), "w") as fp:
-            for line in lines:
-                if not line.startswith("# #-#-#-#-#"):
-                    fp.write(line)
+            # Remove merge markers from msgcat
+            with open(str(path), "r") as fp:
+                lines = list(fp.readlines())
+            with open(str(path), "w") as fp:
+                for line in lines:
+                    if not line.startswith("# #-#-#-#-#"):
+                        fp.write(line)
 
 
 IGNORE_META = (
