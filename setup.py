@@ -3,7 +3,7 @@ from setuptools import setup
 
 setup(
     name='normalize_po',
-    version='1.1.1',
+    version='1.1.2',
     install_requires=['polib ~= 1.1.0'],
     entry_points={
         'console_scripts': [
