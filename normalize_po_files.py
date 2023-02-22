@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import collections
+import pathlib
 import sys
 from unittest import mock
 
@@ -20,18 +21,13 @@ def main():
 
             po_file.save()
 
+            # Remove merge markers from msgcat
             with open(str(path), "r") as fp:
                 lines = list(fp.readlines())
             with open(str(path), "w") as fp:
                 for line in lines:
-                    # Remove merge markers from msgcat
-                    if line.startswith("# #-#-#-#-#"):
-                        continue
-                    
-                    # Remove invisible chars
-                    line = line.replace("\u00a0", " ")
-
-                    fp.write(line)
+                    if not line.startswith("# #-#-#-#-#"):
+                        fp.write(line)
 
 
 IGNORE_META = (
@@ -62,6 +58,7 @@ def patched_cmp(self, other):
     # Work on a copy to protect original
     occ1 = sorted(self.occurrences[:])
     occ2 = sorted(other.occurrences[:])
+    pos = 0
     if occ1 > occ2:
         return 1
     if occ1 < occ2:
