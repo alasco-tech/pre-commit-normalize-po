@@ -3,8 +3,8 @@ from setuptools import setup
 
 setup(
     name='normalize_po',
-    version='1.1.1',
-    install_requires=['polib ~= 1.1.0'],
+    version='1.1.2',
+    install_requires=['polib >= 1.1.0'],
     entry_points={
         'console_scripts': [
             'normalize-po = normalize_po_files:main'
